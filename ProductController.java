@@ -26,3 +26,21 @@ public String registerUser(@RequestParam String name,
     users.add(new User(name, address, paymentMethod));
     return "redirect:/";
 }
+
+@GetMapping("/search")
+public String search(@RequestParam String query, Model model) {
+
+    List<Product> results = new ArrayList<>();
+
+    for (Product p : products) {
+        if (p.getTitle().toLowerCase().contains(query.toLowerCase()) ||
+            p.getCategory().toLowerCase().contains(query.toLowerCase()) ||
+            p.getManufacturer().toLowerCase().contains(query.toLowerCase())) {
+
+            results.add(p);
+        }
+    }
+
+    model.addAttribute("products", results);
+    return "index";
+}
