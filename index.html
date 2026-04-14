@@ -43,5 +43,50 @@
     </div>
 </div>
 
+
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Add Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Add Product</h2>
+
+    <form method="post" action="/add">
+
+        <select class="form-select mb-3" name="title">
+            <option value="">Select Product</option>
+            <option>T-Shirt</option>
+            <option>Hoodie</option>
+            <option>Shoes</option>
+        </select>
+
+        <input class="form-control mb-3" name="manufacturer" placeholder="Manufacturer"/>
+
+        <input class="form-control mb-3" name="price" placeholder="Price"/>
+
+        <select class="form-select mb-3" name="category">
+            <option value="">Select Category</option>
+            <option>Tshirts</option>
+            <option>Hoodies</option>
+            <option>Shoes</option>
+        </select>
+
+        <input class="form-control mb-3" name="size" placeholder="Size"/>
+
+        <input class="form-control mb-3" name="imageUrl" placeholder="Image URL"/>
+
+        <textarea class="form-control mb-3" name="description" placeholder="Description"></textarea>
+
+        <button class="btn btn-primary">Add Product</button>
+    </form>
+</div>
+
+</body>
+</html>
+
 </body>
 </html>
