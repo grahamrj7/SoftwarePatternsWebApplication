@@ -10,3 +10,19 @@ public String addProduct(@RequestParam String title,
     products.add(new Product(title, manufacturer, price, category, size, imageUrl, description));
     return "redirect:/";
 }
+
+private List<User> users = new ArrayList<>();
+
+@GetMapping("/register")
+public String registerForm() {
+    return "register";
+}
+
+@PostMapping("/register")
+public String registerUser(@RequestParam String name,
+                           @RequestParam String address,
+                           @RequestParam String paymentMethod) {
+
+    users.add(new User(name, address, paymentMethod));
+    return "redirect:/";
+}
