@@ -99,3 +99,17 @@ public class Product {
 
 private int rating;
 private String review;
+
+@GetMapping("/checkout")
+public String checkout() {
+
+    for (Product p : cart) {
+        if (p.getStock() > 0) {
+            p.setStock(p.getStock() - 1);
+            productRepository.save(p);
+        }
+    }
+
+    cart.clear();
+    return "redirect:/";
+}
