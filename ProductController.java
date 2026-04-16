@@ -60,3 +60,26 @@ public String review(@RequestParam Long id,
 
     return "redirect:/";
 }
+
+@GetMapping("/sort")
+public String sort(@RequestParam String type, Model model) {
+
+    List<Product> products;
+
+    switch (type) {
+        case "priceAsc":
+            products = productRepository.findAllByOrderByPriceAsc();
+            break;
+        case "priceDesc":
+            products = productRepository.findAllByOrderByPriceDesc();
+            break;
+        case "title":
+            products = productRepository.findAllByOrderByTitleAsc();
+            break;
+        default:
+            products = productRepository.findAll();
+    }
+
+    model.addAttribute("products", products);
+    return "index";
+}
