@@ -96,3 +96,18 @@
     <input class="form-control me-2" name="query" placeholder="Search products...">
     <button class="btn btn-dark">Search</button>
 </form>
+
+<form action="/review" method="post">
+    <input type="hidden" name="id" th:value="${p.id}">
+
+    <select name="rating" class="form-select mb-2">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+
+    <input name="review" class="form-control mb-2" placeholder="Leave a review">
+    <button class="btn btn-sm btn-success">Submit</button>
+</form>
