@@ -96,3 +96,6 @@ public class Product {
     public String getImageUrl() { return imageUrl; }
     public String getDescription() { return description; }
 }
+
+private int rating;
+private String review;
