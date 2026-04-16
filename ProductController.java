@@ -44,3 +44,19 @@ public String search(@RequestParam String query, Model model) {
     model.addAttribute("products", results);
     return "index";
 }
+
+@PostMapping("/review")
+public String review(@RequestParam Long id,
+                     @RequestParam int rating,
+                     @RequestParam String review) {
+
+    Product p = productRepository.findById(id).orElse(null);
+
+    if (p != null) {
+        p.setRating(rating);
+        p.setReview(review);
+        productRepository.save(p);
+    }
+
+    return "redirect:/";
+}
