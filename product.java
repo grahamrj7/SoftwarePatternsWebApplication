@@ -56,3 +56,43 @@ public class ProductController {
         return size;
     }
 }
+package com.example.store;
+
+import jakarta.persistence.*;
+
+@Entity
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String title;
+    private String manufacturer;
+    private double price;
+    private String category;
+    private String size;
+    private String imageUrl;
+    private String description;
+
+    public Product() {}
+
+    public Product(String title, String manufacturer, double price,
+                   String category, String size, String imageUrl, String description) {
+        this.title = title;
+        this.manufacturer = manufacturer;
+        this.price = price;
+        this.category = category;
+        this.size = size;
+        this.imageUrl = imageUrl;
+        this.description = description;
+    }
+
+    public String getTitle() { return title; }
+    public String getManufacturer() { return manufacturer; }
+    public double getPrice() { return price; }
+    public String getCategory() { return category; }
+    public String getSize() { return size; }
+    public String getImageUrl() { return imageUrl; }
+    public String getDescription() { return description; }
+}
