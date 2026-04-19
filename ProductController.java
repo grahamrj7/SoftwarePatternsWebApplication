@@ -104,3 +104,37 @@ public String viewCart(Model model) {
 
     return "cart";
 }
+@GetMapping("/checkout")
+public String checkout(Model model) {
+
+    if (loggedInUser == null) return "redirect:/login";
+
+    double total = 0;
+
+    for (Product p : cart) {
+        if (p.getStock() > 0) {
+            p.setStock(p.getStock() - 1);
+            productRepository.save(p);
+            total += p.getPrice();
+        }
+    }
+
+    double discount = total > 100 ? total * 0.10 : 0;
+    double finalTotal = total - discount;
+
+    loggedInUser.getPurchasedProducts().addAll(cart);
+    loggedInUser.setLoyaltyPoints(loggedInUser.getLoyaltyPoints() + (int) finalTotal);
+    userRepository.save(loggedInUser);
+
+    cart.clear();
+
+    model.addAttribute("message", "Purchase successful");
+    model.addAttribute("total", total);
+    model.addAttribute("discount", discount);
+    model.addAttribute("finalTotal", finalTotal);
+    model.addAttribute("products", productRepository.findAll());
+    model.addAttribute("cartSize", cart.size());
+    model.addAttribute("user", loggedInUser);
+
+    return "index";
+}
