@@ -16,3 +16,4 @@ public class User {
     public String getAddress() { return address; }
     public String getPaymentMethod() { return paymentMethod; }
 }
+private int loyaltyPoints = 0;
