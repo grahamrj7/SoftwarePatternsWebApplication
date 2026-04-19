@@ -83,3 +83,4 @@ public String sort(@RequestParam String type, Model model) {
     model.addAttribute("products", products);
     return "index";
 }
+private List<Product> cart = new ArrayList<>();
