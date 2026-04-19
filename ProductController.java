@@ -84,3 +84,23 @@ public String sort(@RequestParam String type, Model model) {
     return "index";
 }
 private List<Product> cart = new ArrayList<>();
+@GetMapping("/add-to-cart")
+public String addToCart(@RequestParam Long id) {
+
+    if (loggedInUser == null) return "redirect:/login";
+
+    productRepository.findById(id).ifPresent(cart::add);
+
+    return "redirect:/cart";
+}
+
+@GetMapping("/cart")
+public String viewCart(Model model) {
+
+    if (loggedInUser == null) return "redirect:/login";
+
+    model.addAttribute("cart", cart);
+    model.addAttribute("user", loggedInUser);
+
+    return "cart";
+}
