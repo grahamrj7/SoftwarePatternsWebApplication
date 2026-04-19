@@ -111,3 +111,9 @@
     <input name="review" class="form-control mb-2" placeholder="Leave a review">
     <button class="btn btn-sm btn-success">Submit</button>
 </form>
+<a th:href="@{/add-to-cart(id=${p.id})}" class="btn btn-primary btn-sm">
+    Add to Cart
+</a>
+<a href="/cart" class="btn btn-info me-2">
+    Cart (<span th:text="${cartSize}"></span>)
+</a>
