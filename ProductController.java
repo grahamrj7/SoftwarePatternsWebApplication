@@ -164,3 +164,18 @@ public String restock(@RequestParam Long id) {
 
     return "redirect:/admin";
 }
+@PostMapping("/review")
+public String review(@RequestParam Long id,
+                     @RequestParam int rating,
+                     @RequestParam String review) {
+
+    if (loggedInUser == null) return "redirect:/login";
+
+    productRepository.findById(id).ifPresent(p -> {
+        p.setRating(rating);
+        p.setReview(review);
+        productRepository.save(p);
+    });
+
+    return "redirect:/";
+}
