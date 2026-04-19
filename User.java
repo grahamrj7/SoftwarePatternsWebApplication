@@ -17,3 +17,9 @@ public class User {
     public String getPaymentMethod() { return paymentMethod; }
 }
 private int loyaltyPoints = 0;
+
+public int getLoyaltyPoints() { return loyaltyPoints; }
+
+public void setLoyaltyPoints(int loyaltyPoints) {
+    this.loyaltyPoints = loyaltyPoints;
+}
