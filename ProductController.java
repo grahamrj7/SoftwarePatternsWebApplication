@@ -138,3 +138,29 @@ public String checkout(Model model) {
 
     return "index";
 }
+// ADMIN PAGE
+@GetMapping("/admin")
+public String admin(Model model) {
+
+    if (loggedInUser == null) return "redirect:/login";
+
+    model.addAttribute("products", productRepository.findAll());
+    model.addAttribute("users", userRepository.findAll());
+    model.addAttribute("user", loggedInUser);
+
+    return "admin";
+}
+
+// RESTOCK PRODUCTS
+@PostMapping("/restock")
+public String restock(@RequestParam Long id) {
+
+    if (loggedInUser == null) return "redirect:/login";
+
+    productRepository.findById(id).ifPresent(p -> {
+        p.setStock(p.getStock() + 10);
+        productRepository.save(p);
+    });
+
+    return "redirect:/admin";
+}
