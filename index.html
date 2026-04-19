@@ -149,3 +149,7 @@
 
 <button class="btn btn-success btn-sm">Submit</button>
 </form>
+<div th:if="${p.review}" class="mt-2">
+<p><strong>Rating:</strong> <span th:text="${p.rating}"></span>/5</p>
+<p><strong>Review:</strong> <span th:text="${p.review}"></span></p>
+</div>
