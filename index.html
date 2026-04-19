@@ -117,3 +117,19 @@
 <a href="/cart" class="btn btn-info me-2">
     Cart (<span th:text="${cartSize}"></span>)
 </a>
+<div th:if="${message}" class="alert alert-success">
+
+<p th:text="${message}"></p>
+
+<hr>
+
+<p><strong>Total:</strong> €<span th:text="${total}"></span></p>
+<p><strong>Discount:</strong> €<span th:text="${discount}"></span></p>
+<p><strong>Final Total:</strong> €<span th:text="${finalTotal}"></span></p>
+
+<p th:if="${user}">
+<strong>Loyalty Points:</strong>
+<span th:text="${user.loyaltyPoints}"></span>
+</p>
+
+</div>
